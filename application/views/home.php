@@ -1,5 +1,5 @@
 <div class="hero-slide owl-carousel site-blocks-cover">
-    <div class="intro-section" style="background-image: url('<?=base_url(); ?>assets/images/hero_1.jpg');">
+    <div class="intro-section" style="background-image: url('<?=base_url(); ?>assets/images/bg1.jpg');">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7 ml-auto text-right" data-aos="fade-up">
@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="intro-section" style="background-image: url('<?=base_url(); ?>/assets/images/hero_2.jpg');">
+    <div class="intro-section" style="background-image: url('<?=base_url(); ?>/assets/images/bg2.jpe');">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7 mx-auto text-center" data-aos="fade-up">
@@ -124,18 +124,19 @@
         </div>
         <div class="row">
             <div class="col-md-6 col-lg-4 mb-4">
-                <a href="#">
+                <a href="<?= base_url('main/kamakhya');?>">
                     <div class="service-39381">
-                        <img src="<?= base_url(); ?>assets/images/hero_1.jpg" alt="Image" class="img-fluid">
+                        <img src="<?= base_url(); ?>assets/images/kamakhya.jpg" alt="Image" class="img-fluid">
                         <div class="p-4">
-                            <h3><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</h3>
+                            <h3><span class="icon-room mr-1 text-primary"></span> Guwahati - Assam</h3>
+                            <h6>In the heart of the city Guwahati, Kamakhya Mandir is a Hindu Temple dedicated to the mother goddess Kamakhya</h6>
                             <div class="d-flex">
                                 <div class="mr-auto">
                                     <span class="icon-date_range"></span>
-                                    Sep. 05 &mdash; Oct. 15
+                                    1 Day
                                 </div>
                                 <div class="ml-auto price">
-                                    <span class="bg-primary">$600</span>
+                                    <span class="bg-primary">Rs 2000</span>
                                 </div>
 
                             </div>
@@ -146,16 +147,18 @@
             <div class="col-md-6 col-lg-4 mb-4">
                 <a href="#">
                     <div class="service-39381">
-                        <img src="<?= base_url(); ?>assets/images/hero_2.jpg" alt="Image" class="img-fluid">
+                        <img src="<?= base_url(); ?>assets/images/shillong.jpg" alt="Image" class="img-fluid">
                         <div class="p-4">
-                            <h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
+                            <h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Shillong &mdash; Meghalaya</a></h3>
+                            <h6>Shillong is a hill station in the northeastern part of India and the capital of Meghalaya, which means "The Abode of Clouds"</h6>
+
                             <div class="d-flex">
                                 <div class="mr-auto">
                                     <span class="icon-date_range"></span>
-                                    Sep. 05 &mdash; Oct. 15
+                                    2 Days 1 Night
                                 </div>
                                 <div class="ml-auto price">
-                                    <span class="bg-primary">$600</span>
+                                    <span class="bg-primary">Rs 3600</span>
                                 </div>
 
                             </div>
@@ -166,37 +169,17 @@
             <div class="col-md-6 col-lg-4 mb-4">
                 <a href="#">
                     <div class="service-39381">
-                        <img src="<?= base_url(); ?>assets/images/hero_1.jpg" alt="Image" class="img-fluid">
+                        <img src="<?= base_url(); ?>assets/images/kaziranga.jpg" alt="Image" class="img-fluid">
                         <div class="p-4">
-                            <h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
+                            <h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Kaziranga &mdash; Assam</a></h3>
+                            <h6>The Kaziranga National Park hosts two-thirds of the world's great one-horned rhinoceroses, is a World Heritage Site.</h6>
                             <div class="d-flex">
                                 <div class="mr-auto">
                                     <span class="icon-date_range"></span>
-                                    Sep. 05 &mdash; Oct. 15
+                                    2 Days - 1 Night
                                 </div>
                                 <div class="ml-auto price">
-                                    <span class="bg-primary">$600</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-6 col-lg-4 mb-4">
-                <a href="#">
-                    <div class="service-39381">
-                        <img src="<?= base_url(); ?>assets/images/hero_2.jpg" alt="Image" class="img-fluid">
-                        <div class="p-4">
-                            <h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-                            <div class="d-flex">
-                                <div class="mr-auto">
-                                    <span class="icon-date_range"></span>
-                                    Sep. 05 &mdash; Oct. 15
-                                </div>
-                                <div class="ml-auto price">
-                                    <span class="bg-primary">$600</span>
+                                    <span class="bg-primary">Rs 4000</span>
                                 </div>
 
                             </div>
@@ -207,112 +190,94 @@
             <div class="col-md-6 col-lg-4 mb-4">
                 <a href="#">
                     <div class="service-39381">
-                        <img src="<?= base_url(); ?>assets/images/hero_1.jpg" alt="Image" class="img-fluid">
+                        <img src="<?= base_url(); ?>assets/images/assam.jpg" alt="Image" class="img-fluid">
                         <div class="p-4">
-                            <h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-                            <div class="d-flex">
-                                <div class="mr-auto">
-                                    <span class="icon-date_range"></span>
-                                    Sep. 05 &mdash; Oct. 15
-                                </div>
-                                <div class="ml-auto price">
-                                    <span class="bg-primary">$600</span>
-                                </div>
-
-                            </div>
+                            <h3>Customise your own trip</h3>
+<!--                            <h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>-->
+<!--                            <div class="d-flex">-->
+<!--                                <div class="mr-auto">-->
+<!--                                    <span class="icon-date_range"></span>-->
+<!--                                    Sep. 05 &mdash; Oct. 15-->
+<!--                                </div>-->
+<!--                                <div class="ml-auto price">-->
+<!--                                    <span class="bg-primary">$600</span>-->
+<!--                                </div>-->
+<!---->
+<!--                            </div>-->
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-                <a href="#">
-                    <div class="service-39381">
-                        <img src="<?= base_url(); ?>assets/images/hero_2.jpg" alt="Image" class="img-fluid">
-                        <div class="p-4">
-                            <h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-                            <div class="d-flex">
-                                <div class="mr-auto">
-                                    <span class="icon-date_range"></span>
-                                    Sep. 05 &mdash; Oct. 15
-                                </div>
-                                <div class="ml-auto price">
-                                    <span class="bg-primary">$600</span>
-                                </div>
 
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
 
         </div>
     </div>
 </div>
 
-<div class="site-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7">
-                <p><img src="<?= base_url(); ?>assets/images/hero_1.jpg" alt="Image" class="img-fluid"></p>
-            </div>
-            <div class="col-md-5">
-                <span class="text-serif text-primary">Book Now</span>
-                <h3 class="heading-92913 text-black">Book A Yacht</h3>
-                <form action="#" class="row">
-                    <div class="form-group col-md-6">
-                        <label for="input-1">Full Name:</label>
-                        <input type="text" class="form-control" id="input-1">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="input-2">Number of People:</label>
-                        <input type="text" class="form-control" id="input-2">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="input-3">Date From:</label>
-                        <input type="text" class="form-control datepicker" id="input-3">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="input-4">Date To:</label>
-                        <input type="text" class="form-control datepicker" id="input-4">
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <label for="input-5">Yacht You're Interested in:</label>
-                        <select name="" id="input-5" class="form-control">
-                            <option value="">Motor Yacht</option>
-                            <option value="">Hi-Speed Yacht</option>
-                            <option value="">Premium Yacht</option>
-                            <option value="">Presidential Yacht</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="input-6">Email Address</label>
-                        <input type="text" class="form-control" id="input-6">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="input-7">Phone Number</label>
-                        <input type="text" class="form-control" id="input-7">
-                    </div>
-
-
-
-                    <div class="form-group col-md-12">
-                        <label for="input-8">Notes</label>
-                        <textarea name="" id="input-8" cols="30" rows="5" class="form-control"></textarea>
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <input type="submit" class="btn btn-primary py-3 px-5" value="Book Now">
-                    </div>
-
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="site-section">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-7">-->
+<!--                <p><img src="--><?//= base_url(); ?><!--assets/images/hero_1.jpg" alt="Image" class="img-fluid"></p>-->
+<!--            </div>-->
+<!--            <div class="col-md-5">-->
+<!--                <span class="text-serif text-primary">Book Now</span>-->
+<!--                <h3 class="heading-92913 text-black">Book A Yacht</h3>-->
+<!--                <form action="#" class="row">-->
+<!--                    <div class="form-group col-md-6">-->
+<!--                        <label for="input-1">Full Name:</label>-->
+<!--                        <input type="text" class="form-control" id="input-1">-->
+<!--                    </div>-->
+<!--                    <div class="form-group col-md-6">-->
+<!--                        <label for="input-2">Number of People:</label>-->
+<!--                        <input type="text" class="form-control" id="input-2">-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="form-group col-md-6">-->
+<!--                        <label for="input-3">Date From:</label>-->
+<!--                        <input type="text" class="form-control datepicker" id="input-3">-->
+<!--                    </div>-->
+<!--                    <div class="form-group col-md-6">-->
+<!--                        <label for="input-4">Date To:</label>-->
+<!--                        <input type="text" class="form-control datepicker" id="input-4">-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="form-group col-md-12">-->
+<!--                        <label for="input-5">Yacht You're Interested in:</label>-->
+<!--                        <select name="" id="input-5" class="form-control">-->
+<!--                            <option value="">Motor Yacht</option>-->
+<!--                            <option value="">Hi-Speed Yacht</option>-->
+<!--                            <option value="">Premium Yacht</option>-->
+<!--                            <option value="">Presidential Yacht</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="form-group col-md-6">-->
+<!--                        <label for="input-6">Email Address</label>-->
+<!--                        <input type="text" class="form-control" id="input-6">-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="form-group col-md-6">-->
+<!--                        <label for="input-7">Phone Number</label>-->
+<!--                        <input type="text" class="form-control" id="input-7">-->
+<!--                    </div>-->
+<!---->
+<!---->
+<!---->
+<!--                    <div class="form-group col-md-12">-->
+<!--                        <label for="input-8">Notes</label>-->
+<!--                        <textarea name="" id="input-8" cols="30" rows="5" class="form-control"></textarea>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="form-group col-md-12">-->
+<!--                        <input type="submit" class="btn btn-primary py-3 px-5" value="Book Now">-->
+<!--                    </div>-->
+<!---->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 <div class="site-section">

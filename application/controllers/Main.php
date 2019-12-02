@@ -41,5 +41,15 @@ class Main extends CI_Controller {
         $this->load->view('layout/main',$data);
     }
 
+    public function kamakhya(){
+        $data['view'] = 'book_trip';
+        $this->load->view('layout/main',$data);
+    }
+
+    public function book_now(){
+        $data['view'] = 'book_now';
+        $this->load->view('layout/main',$data);
+    }
+
 
 }
