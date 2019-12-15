@@ -123,91 +123,32 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-lg-4 mb-4">
-                <a href="<?= base_url('main/kamakhya');?>">
-                    <div class="service-39381">
-                        <img src="<?= base_url(); ?>assets/images/kamakhya.jpg" alt="Image" class="img-fluid">
-                        <div class="p-4">
-                            <h3><span class="icon-room mr-1 text-primary"></span> Guwahati - Assam</h3>
-                            <h6>In the heart of the city Guwahati, Kamakhya Mandir is a Hindu Temple dedicated to the mother goddess Kamakhya</h6>
-                            <div class="d-flex">
-                                <div class="mr-auto">
-                                    <span class="icon-date_range"></span>
-                                    1 Day
-                                </div>
-                                <div class="ml-auto price">
-                                    <span class="bg-primary">Rs 2000</span>
-                                </div>
+            <?php foreach ($result as $row): ?>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <a href="<?= base_url('main/destination_details');?>">
+                        <div class="service-39381">
+                            <div class="text-center">
+                                <?= $row['tour_name']; ?>
+                            </div>
+                            <img src="<?= base_url('assets/images/destination/').$row['image']; ?>" alt="Image" class="img-fluid">
+                            <div class="p-4">
+                                <h3><span class="icon-room mr-1 text-primary"></span> <?=$row['location']?></h3>
+                                <h6><?= $row['introduction']; ?></h6>
+                                <div class="d-flex">
+                                    <div class="mr-auto">
+                                        <span class="icon-date_range"></span>
+                                        <?= $row['duration']; ?>
+                                    </div>
+                                    <div class="ml-auto price">
+                                        <span class="bg-primary">Rs <?= $row['price']; ?></span>
+                                    </div>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-                <a href="#">
-                    <div class="service-39381">
-                        <img src="<?= base_url(); ?>assets/images/shillong.jpg" alt="Image" class="img-fluid">
-                        <div class="p-4">
-                            <h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Shillong &mdash; Meghalaya</a></h3>
-                            <h6>Shillong is a hill station in the northeastern part of India and the capital of Meghalaya, which means "The Abode of Clouds"</h6>
-
-                            <div class="d-flex">
-                                <div class="mr-auto">
-                                    <span class="icon-date_range"></span>
-                                    2 Days 1 Night
-                                </div>
-                                <div class="ml-auto price">
-                                    <span class="bg-primary">Rs 3600</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-                <a href="#">
-                    <div class="service-39381">
-                        <img src="<?= base_url(); ?>assets/images/kaziranga.jpg" alt="Image" class="img-fluid">
-                        <div class="p-4">
-                            <h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Kaziranga &mdash; Assam</a></h3>
-                            <h6>The Kaziranga National Park hosts two-thirds of the world's great one-horned rhinoceroses, is a World Heritage Site.</h6>
-                            <div class="d-flex">
-                                <div class="mr-auto">
-                                    <span class="icon-date_range"></span>
-                                    2 Days - 1 Night
-                                </div>
-                                <div class="ml-auto price">
-                                    <span class="bg-primary">Rs 4000</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-                <a href="#">
-                    <div class="service-39381">
-                        <img src="<?= base_url(); ?>assets/images/assam.jpg" alt="Image" class="img-fluid">
-                        <div class="p-4">
-                            <h3>Customise your own trip</h3>
-<!--                            <h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>-->
-<!--                            <div class="d-flex">-->
-<!--                                <div class="mr-auto">-->
-<!--                                    <span class="icon-date_range"></span>-->
-<!--                                    Sep. 05 &mdash; Oct. 15-->
-<!--                                </div>-->
-<!--                                <div class="ml-auto price">-->
-<!--                                    <span class="bg-primary">$600</span>-->
-<!--                                </div>-->
-<!---->
-<!--                            </div>-->
-                        </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
 
 
         </div>

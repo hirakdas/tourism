@@ -16,10 +16,15 @@
 
         <div class="row">
             <div class="col-md-12">
+                <div id="error"></div>
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <!--                           <h5 class="card-title">Controls Types</h5>-->
-                        <form class="" id="destination_form">
+
+                        <form method="post" id="destination_form">
+                            <div class="position-relative form-group">
+                                <label for="tour_name" class="">Tour Name</label>
+                                <input name="tour_name"  type="text" class="form-control" required>
+                            </div>
                             <div class="position-relative form-group">
                                 <label for="location" class="">Location</label>
                                 <input name="location"  type="text" class="form-control" required>
@@ -50,31 +55,35 @@
     </div>
 </div>
 
-<script type="text/javascript" src="<?= base_url(); ?>assets/js/jquery-3.3.1.min.js"></script>
+<?php include 'script.php'; ?>
 
 <script>
     $('#destination_form').submit(function(e){
-        // console.error(new FormData(this));
-        let formData = new FormData();
-        formData.append('file', $('#image')[0].files[0]);
         e.preventDefault();
         $.ajax({
             url:'<?= base_url('admin/insert_destination'); ?>',
             type:"post",
-            data:formData,
+            data:new FormData(this),
             processData:false,
             contentType:false,
             cache:false,
-            async:false,
             dataType: 'json',
             success: function(data){
 
                 if(data.error === 0){
-
+                    $('#error').html("<div class='alert alert-success'>" +
+                        "<a href='#' class='close' data-dismiss='alert'>&times;</a>" +
+                        "<strong>Success! </strong>" + data.msg +
+                        "</div>");
+                    window.setTimeout(function () {
+                        $(".alert-success").fadeTo(500, 0).slideUp(500, function () {
+                            $(this).remove();
+                        });
+                    }, 2000);
                 }
                 else{
                     $('#error').html("<div class='alert alert-danger'>" +
-                        "<button type='button' class='close' data-dismiss='alert'>x</button>" +
+                        "<a href='#' class='close' data-dismiss='alert'>&times;</a>" +
                         "<strong>Error! </strong>" + data.msg +
                         "</div>");
                 }

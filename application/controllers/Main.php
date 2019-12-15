@@ -6,11 +6,12 @@ class Main extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-
+        $this->load->model('Common_model');
     }
 
     public function index()
     {
+        $data['result']=$this->Common_model->get_all('destination');
         $data['view'] = 'home';
         $this->load->view('layout/main',$data);
     }
@@ -41,7 +42,7 @@ class Main extends CI_Controller {
         $this->load->view('layout/main',$data);
     }
 
-    public function kamakhya(){
+    public function destination_details(){
         $data['view'] = 'book_trip';
         $this->load->view('layout/main',$data);
     }
