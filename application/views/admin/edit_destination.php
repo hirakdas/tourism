@@ -69,7 +69,7 @@
 
         e.preventDefault();
         let id = $('.destination_id').attr('id');
-        alert(id);
+
         $.ajax({
             url:'<?= base_url('admin/update_destination/'); ?>'+id,
             type:"post",

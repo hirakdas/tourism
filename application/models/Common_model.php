@@ -32,4 +32,13 @@ class Common_model extends CI_Model{
         $this->db->delete($table_name);
         return TRUE;
     }
+
+    function add_batch($table_name,$data){
+        try {
+            $this->db->insert_batch($table_name,$data);
+            return $this->db->insert_id();
+        } catch (Exception $e) {
+            return FALSE;
+        }
+    }
 }

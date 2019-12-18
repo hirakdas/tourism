@@ -70,12 +70,13 @@
             dataType: 'json',
             success: function(data){
 
-                if(data.error === 0){
+                if(data.error == 0){
+                    $('#destination_form')[0].reset();
                     $('#error').html("<div class='alert alert-success'>" +
                         "<a href='#' class='close' data-dismiss='alert'>&times;</a>" +
                         "<strong>Success! </strong>" + data.msg +
                         "</div>");
-                    window.setTimeout(function () {
+                    window.setTimeout(function() {
                         $(".alert-success").fadeTo(500, 0).slideUp(500, function () {
                             $(this).remove();
                         });

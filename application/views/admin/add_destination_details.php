@@ -23,24 +23,24 @@
                         <form method="post" id="destination_form">
                             <div class="position-relative form-group">
                                 <label for="tour_name" class="">Tour Name</label>
-                                <select name="tour_id" id="tour_id" class="form-control">
-                                    <option val="">Select Tour</option>
+                                <select name="tour_id" id="tour_id" class="form-control" required>
+                                    <option value="">Select Tour</option>
                                 </select>
                             </div>
 
                             <div class="position-relative form-group">
                                 <label for="introduction" class="">Introduction</label>
-                                <textarea name="introduction"  class="form-control" ></textarea>
+                                <textarea name="about"  class="form-control" required></textarea>
                             </div>
 
                             <div class="position-relative form-group">
                                 <label for="details" class="">Details</label>
-                                <textarea name="details"  class="form-control" ></textarea>
+                                <textarea name="details"  class="form-control" required></textarea>
                             </div>
 
                             <div class="position-relative form-group">
                                 <label for="image" class="">Images</label>
-                                <input name="files" id="images" type="file" multiple="multiple" class="form-control-file" accept="image/*" required>
+                                <input name="files" id="files" type="file" multiple="multiple" class="form-control-file" accept="image/*" required>
                             </div>
 
                             <button class="mt-1 btn btn-primary" type="submit">Submit</button>
@@ -71,26 +71,33 @@
 
     $('#destination_form').submit(function(e){
         e.preventDefault();
-        var form_data = new FormData();
-        var ins = document.getElementById('images').files.length;
-        for (var x = 0; x < ins; x++) {
-            form_data.append("images[]", document.getElementById('images').files[x]);
+        var files = $('#files')[0].files;
+        var form_data = new FormData(this);
+        for(var count = 0; count<files.length; count++) {
+            form_data.append("files[]", files[count]);
         }
         $.ajax({
-            url:'<?= base_url('admin/insert_destination_details'); ?>',
-            type:"post",
+            url:"<?php echo base_url(); ?>admin/insert_destination_details", //base_url() return http://localhost/tutorial/codeigniter/
+            method:"POST",
             data:form_data,
-            processData:false,
             contentType:false,
             cache:false,
+            processData:false,
             dataType: 'json',
-            success: function(data){
+            // beforeSend:function()
+            // {
+            //     $('#uploaded_images').html("<label class='text-success'>Uploading...</label>");
+            // },
+            success:function(data){
+                console.log(data);
 
-                if(data.error === 0){
+                if(data.error == 0){
                     $('#error').html("<div class='alert alert-success'>" +
                         "<a href='#' class='close' data-dismiss='alert'>&times;</a>" +
                         "<strong>Success! </strong>" + data.msg +
                         "</div>");
+                    $('#destination_form')[0].reset();
+                    window.scrollTo(0, 0);
                     window.setTimeout(function () {
                         $(".alert-success").fadeTo(500, 0).slideUp(500, function () {
                             $(this).remove();
@@ -105,5 +112,6 @@
                 }
             }
         });
+
     })
 </script>

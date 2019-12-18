@@ -6,7 +6,6 @@ class Admin extends CI_Controller
     function __construct()
     {
         parent::__construct();
-
         $this->load->model('Common_model');
     }
 
@@ -57,7 +56,6 @@ class Admin extends CI_Controller
         $data['view'] = 'admin/edit_destination';
         $this->load->view('admin/layout',$data);
     }
-
     public function insert_destination(){
         $config['upload_path']="./assets/images/destination";
         $config['allowed_types']='jpg|png|jpeg';
@@ -180,53 +178,66 @@ class Admin extends CI_Controller
     }
 
     public function insert_destination_details(){
-        $countfiles = count($_FILES['images']['name']);
         $tour_id = $this->input->post('tour_id');
+        $image_data = array();
 
-        for($i=0;$i<$countfiles;$i++){
-
-            if(!empty($_FILES['files']['name'][$i])){
-
-                // Define new $_FILES array - $_FILES['file']
-                $_FILES['images']['name'] = $_FILES['images']['name'][$i];
-                $_FILES['images']['type'] = $_FILES['images']['type'][$i];
-                $_FILES['images']['tmp_name'] = $_FILES['images']['tmp_name'][$i];
-                $_FILES['images']['error'] = $_FILES['images']['error'][$i];
-                $_FILES['images']['size'] = $_FILES['images']['size'][$i];
-
-                // Set preference
-                $config['upload_path'] = './assets/images/details';
-                $config['allowed_types'] = 'jpg|jpeg|png|gif';
-                $config['max_size'] = '5000'; // max_size in kb
-                $config['file_name'] = $_FILES['images']['name'][$i];
-
-                //Load upload library
-                $this->load->library('upload',$config);
-                // File upload
-                if($this->upload->do_upload('images')){
-
-                    $data = array('upload_data' => $this->upload->data());
+        if($_FILES["files"]["name"] != '')
+        {
+            $config["upload_path"] = './assets/images/destination_details/';
+            $config["allowed_types"] = 'gif|jpg|png|jpeg';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            for($count = 0; $count<count($_FILES["files"]["name"]); $count++)
+            {
+                $_FILES["file"]["name"] = $_FILES["files"]["name"][$count];
+                $_FILES["file"]["type"] = $_FILES["files"]["type"][$count];
+                $_FILES["file"]["tmp_name"] = $_FILES["files"]["tmp_name"][$count];
+                $_FILES["file"]["error"] = $_FILES["files"]["error"][$count];
+                $_FILES["file"]["size"] = $_FILES["files"]["size"][$count];
+                if($this->upload->do_upload('file'))
+                {
+                    $data = $this->upload->data();
                     $data1 = array(
                         'tour_id' => $tour_id,
-                        'image' => $data['upload_data']['file_name']
+                        'image' => $data['file_name']
                     );
-                    $result= $this->Common_model->add('destination_images',$data1);
 
+                    $image_data[] = $data1;
+                }
+                else{
+                    $data=array(
+                        'error'=> 1,
+                        'msg'=> "Make sure to upload png and jpg image"
+                    );
+                    echo json_encode($data);
+                    die();
                 }
             }
+            $data=array(
+                'tour_id' => $tour_id,
+                'about' => $this->input->post('about'),
+                'details' => $this->input->post('details')
+            );
+            $result = $this->Common_model->add('destination_text',$data);
+            $result2 = $this->Common_model->add_batch('destination_img',$image_data);
 
+            if($result && $result2){
+                $data=array(
+                    'error'=> 0,
+                    'msg'=> "Record Inserted Succesfully"
+                );
+                echo json_encode($data);
+            }
         }
     }
 
     public function delete($table_name,$id){
-
         $result=$this->Common_model->delete($table_name,'id',$id);
         if($result) {
             $data = array(
                 'error' => 0,
                 'msg' => "Record Deleted Successfully"
             );
-
             echo json_encode($data);
         }
     }
