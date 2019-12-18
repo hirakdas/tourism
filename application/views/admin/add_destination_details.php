@@ -40,7 +40,7 @@
 
                             <div class="position-relative form-group">
                                 <label for="image" class="">Images</label>
-                                <input name="images" id="images" type="file" multiple="multiple" class="form-control-file" accept="image/*" required>
+                                <input name="files" id="images" type="file" multiple="multiple" class="form-control-file" accept="image/*" required>
                             </div>
 
                             <button class="mt-1 btn btn-primary" type="submit">Submit</button>
