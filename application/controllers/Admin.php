@@ -231,6 +231,13 @@ class Admin extends CI_Controller
         }
     }
 
+    public function edit_destination_details($id){
+        $data['text'] = $this->Common_model->get_all_where('destination_text','tour_id',$id);
+        $data['img'] = $this->Common_model->get_all_where('destination_img','tour_id',$id);
+        $data['view'] = 'admin/edit_destination_details';
+        $this->load->view('admin/layout',$data);
+    }
+
     public function delete($table_name,$id){
         $result=$this->Common_model->delete($table_name,'id',$id);
         if($result) {

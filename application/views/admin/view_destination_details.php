@@ -33,17 +33,13 @@
                                             <div class="ml-auto price">
                                                 <span class="bg-primary">Rs <?= $row['price']; ?></span>
                                             </div>
-
-
-
                                         </div>
                                     </div>
                                     <div class="text-right">
-                                        <a href="'.base_url().'admin/add_destination/'.$row['id'].'" class="btn btn-primary btn-sm update" id="'.$row['id'].'" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                                        <a href="<?= base_url('admin/edit_destination_details/').$row['id']; ?>" class="btn btn-primary btn-sm update" id="'.$row['id'].'" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
                                         <a href="" class="btn btn-danger btn-sm item_delete delete" id="'. $row['id'] .'" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
                                     </div>
                                 </div>
-
                         </div>
                     <?php endforeach; ?>
                 </div>

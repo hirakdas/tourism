@@ -14,6 +14,11 @@ class Common_model extends CI_Model{
         $query = $this->db->get($table_name);
         return $query->result_array();
     }
+    function get_all_where($table_name,$column_name,$column_id){
+        $this->db->where($column_name,$column_id);
+        $query = $this->db->get($table_name);
+        return $query->result_array();
+    }
 
     function get_one($table_name,$column_name,$column_id){
         $this->db->where($column_name,$column_id);
