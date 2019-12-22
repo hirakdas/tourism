@@ -30,17 +30,17 @@
 
                             <div class="position-relative form-group">
                                 <label for="introduction" class="">Introduction</label>
-                                <textarea name="about"  class="form-control" required></textarea>
+                                <textarea name="about" id="about" class="form-control" required></textarea>
                             </div>
 
                             <div class="position-relative form-group">
                                 <label for="details" class="">Details</label>
-                                <textarea name="details"  class="form-control" required></textarea>
+                                <textarea name="details" id="details" class="form-control" required></textarea>
                             </div>
 
                             <div class="position-relative form-group">
                                 <label for="image" class="">Images</label>
-                                <input name="files" id="files" type="file" multiple="multiple" class="form-control-file" accept="image/*" required>
+                                <input name="files" id="files" type="file" multiple="multiple" class="form-control-file" accept="image/*" >
                             </div>
 
                             <button class="mt-1 btn btn-primary" type="submit">Submit</button>
@@ -55,6 +55,8 @@
 <?php include 'script.php'; ?>
 
 <script>
+    CKEDITOR.replace('details');
+    CKEDITOR.replace('about');
 
     $(document).ready(function(){
         $.ajax({

@@ -57,6 +57,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/layout',$data);
     }
     public function insert_destination(){
+
         $config['upload_path']="./assets/images/destination";
         $config['allowed_types']='jpg|png|jpeg';
         $this->load->library('upload',$config);
@@ -218,6 +219,7 @@ class Admin extends CI_Controller
                 'about' => $this->input->post('about'),
                 'details' => $this->input->post('details')
             );
+
             $result = $this->Common_model->add('destination_text',$data);
             $result2 = $this->Common_model->add_batch('destination_img',$image_data);
 
@@ -229,11 +231,23 @@ class Admin extends CI_Controller
                 echo json_encode($data);
             }
         }
+//        else{
+//            $data=array(
+//                'tour_id' => $tour_id,
+//                'about' => $this->input->post('about'),
+//                'details' => $this->input->post('details')
+//            );
+//            print_r($data);
+//            die();
+//        }
     }
 
     public function edit_destination_details($id){
+        $data['tour_name']=$this->Common_model->get_all_where('destination','id',$id);
         $data['text'] = $this->Common_model->get_all_where('destination_text','tour_id',$id);
         $data['img'] = $this->Common_model->get_all_where('destination_img','tour_id',$id);
+//        print_r($data['text']);
+//        die();
         $data['view'] = 'admin/edit_destination_details';
         $this->load->view('admin/layout',$data);
     }

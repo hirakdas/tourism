@@ -9,6 +9,7 @@
     <title>Analytics Dashboard - This is an example dashboard created using build-in elements and components.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <?php include 'css.php'; ?>
+    <script src="<?= base_url()?>assets2/scripts/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
