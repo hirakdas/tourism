@@ -21,11 +21,11 @@
                             <thead>
                             <tr class="text-center">
                                 <th>Action</th>
+                                <th>Tour Name</th>
                                 <th>Location</th>
                                 <th>Introduction</th>
                                 <th>Duration</th>
                                 <th>Price</th>
-                                <th>Image</th>
                             </tr>
                             </thead>
                             <tbody class="text-center">

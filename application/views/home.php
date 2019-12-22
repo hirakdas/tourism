@@ -125,7 +125,7 @@
         <div class="row">
             <?php foreach ($result as $row): ?>
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="<?= base_url('main/destination_details');?>">
+                    <a href="<?= base_url('main/destination_details/').$row['tour_name'];?>">
                         <div class="service-39381">
                             <div class="text-center">
                                 <?= $row['tour_name']; ?>

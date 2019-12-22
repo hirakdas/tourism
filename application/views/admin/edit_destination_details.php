@@ -20,7 +20,7 @@
                 <div class="main-card mb-3 card">
                     <div class="card-body">
 
-                        <form method="post" id="destination_form">
+                        <form method="post" id="destination_details_edit">
                             <div class="position-relative form-group">
                                 <label for="tour_name" class="">Tour Name</label>
                                 <select name="tour_id" id="tour_id" class="form-control" required>
@@ -40,7 +40,7 @@
 
                             <div class="position-relative form-group">
                                 <label for="image" class="">Images</label>
-                                <input name="files" id="files" type="file" multiple="multiple" class="form-control-file" accept="image/*" required>
+                                <input name="files" id="files" type="file" multiple="multiple" class="form-control-file" accept="image/*">
                             </div>
 
                             <button class="mt-1 btn btn-primary" type="submit">Submit</button>
@@ -50,7 +50,7 @@
                             <?php foreach ($img as $row): ?>
                             <div class="col-md-3 mt-5">
                                 <div class="img_container text-right">
-                                    <button class="btn text-right"></button>
+                                    <button class="btn text-right" onclick="del_img(<?=$row['id']?>)"><i class="fa fa-times" aria-hidden="true"></i></button>
                                     <img src="<?= base_url('assets/images/destination_details/').$row['image']?>" height="200px" width="200px">
                                 </div>
                             </div>
@@ -68,4 +68,83 @@
 <script>
     CKEDITOR.replace('details');
     CKEDITOR.replace('about');
+    function del_img(id){
+        let table_name = 'destination_img';
+        bootbox.confirm({
+            message: "This is a confirm with custom button text and color! Do you like it?",
+            buttons: {
+                confirm: {
+                    label: 'Yes',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: 'No',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if(result){
+                    $.ajax({
+                        url:'<?= base_url('admin/delete/'); ?>'+table_name+'/'+id,
+                        type:"post",
+                        processData:false,
+                        contentType:false,
+                        cache:false,
+                        dataType: 'json',
+                        success: function(data){
+                            if(data.error === 0){
+                                window.location.reload();
+                            }
+                        }
+                    });
+                }
+
+            }
+        });
+
+
+    }
+
+    $('#destination_details_edit').submit(function(e) {
+        e.preventDefault();
+        let id = $('.destination_id').attr('id');
+        var files = $('#files')[0].files;
+        var form_data = new FormData(this);
+        for(var count = 0; count<files.length; count++) {
+            form_data.append("files[]", files[count]);
+        }
+        $.ajax({
+            url: '<?= base_url('admin/update_destination_details/'); ?>' + id,
+            type: "post",
+            data: form_data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            dataType: 'json',
+            success: function (data) {
+
+                if (data.error === 0) {
+                    $('#error').html("<div class='alert alert-success'>" +
+                        "<a href='#' class='close' data-dismiss='alert'>&times;</a>" +
+                        "<strong>Success! </strong>" + data.msg +
+                        "</div>");
+                    $('#destination_details_edit')[0].reset();
+                    window.scrollTo(0, 0);
+                    window.setTimeout(function () {
+                        $(".alert-success").fadeTo(500, 0).slideUp(500, function () {
+                            $(this).remove();
+                            window.location.href = '<?= base_url('admin/view_destination_details')?>';
+                        });
+                    }, 1000);
+                }
+                else {
+                    $('#error').html("<div class='alert alert-danger'>" +
+                        "<a href='#' class='close' data-dismiss='alert'>&times;</a>" +
+                        "<strong>Error! </strong>" + data.msg +
+                        "</div>");
+                }
+            }
+        });
+    });
+
 </script>

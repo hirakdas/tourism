@@ -56,6 +56,7 @@ class Admin extends CI_Controller
         $data['view'] = 'admin/edit_destination';
         $this->load->view('admin/layout',$data);
     }
+
     public function insert_destination(){
 
         $config['upload_path']="./assets/images/destination";
@@ -71,6 +72,8 @@ class Admin extends CI_Controller
                 'price' => $this->input->post('price'),
                 'image' => $data['upload_data']['file_name']
             );
+//            print_r($data1);
+//            die();
             $result= $this->Common_model->add('destination',$data1);
 
             if($result) {
@@ -226,7 +229,7 @@ class Admin extends CI_Controller
             if($result && $result2){
                 $data=array(
                     'error'=> 0,
-                    'msg'=> "Record Inserted Succesfully"
+                    'msg'=> "Record Inserted Successfully"
                 );
                 echo json_encode($data);
             }
@@ -262,4 +265,82 @@ class Admin extends CI_Controller
             echo json_encode($data);
         }
     }
+
+    public function update_destination_details($id){
+        $tour_id = $this->input->post('tour_id');
+        $image_data = array();
+        if($_FILES["files"]["name"] != '')
+        {
+            $config["upload_path"] = './assets/images/destination_details';
+            $config["allowed_types"] = 'gif|jpg|png|jpeg';
+            $this->load->library('upload', $config);
+//            $this->upload->initialize($config);
+            for($count = 0; $count<count($_FILES["files"]["name"]); $count++)
+            {
+                $_FILES["file"]["name"] = $_FILES["files"]["name"][$count];
+                $_FILES["file"]["type"] = $_FILES["files"]["type"][$count];
+                $_FILES["file"]["tmp_name"] = $_FILES["files"]["tmp_name"][$count];
+                $_FILES["file"]["error"] = $_FILES["files"]["error"][$count];
+                $_FILES["file"]["size"] = $_FILES["files"]["size"][$count];
+                if($this->upload->do_upload('file'))
+                {
+                    $data = $this->upload->data();
+                    $data1 = array(
+                        'tour_id' => $tour_id,
+                        'image' => $data['file_name']
+                    );
+
+                    $image_data[] = $data1;
+                }
+                else{
+                    $data=array(
+                        'error'=> 1,
+                        'msg'=> "Make sure to upload png and jpg image"
+                    );
+                    echo json_encode($data);
+                    die();
+                }
+            }
+            $data=array(
+                'tour_id' =>$tour_id,
+                'about' => $this->input->post('about'),
+                'details' => $this->input->post('details')
+            );
+//            print_r($data);
+//            print_r($image_data);
+//            die();
+
+            $result = $this->Common_model->update('destination_text', 'tour_id', $tour_id, $data);
+            $result2 = $this->Common_model->add_batch('destination_img',$image_data);
+
+            if($result && $result2){
+                $data=array(
+                    'error'=> 0,
+                    'msg'=> "Record Inserted Successfully"
+                );
+                echo json_encode($data);
+            }
+        }
+        else{
+            $data=array(
+                'tour_id' => $tour_id,
+                'about' => $this->input->post('about'),
+                'details' => $this->input->post('details')
+            );
+
+//            print_r($data);
+//            die();
+            $result = $this->Common_model->update('destination_text', 'tour_id', $tour_id, $data);
+
+            if($result){
+                $data=array(
+                    'error'=> 0,
+                    'msg'=> "Record Inserted Successfully"
+                );
+                echo json_encode($data);
+            }
+        }
+
+    }
+
 }

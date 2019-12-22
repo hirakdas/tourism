@@ -27,9 +27,15 @@ class Common_model extends CI_Model{
     }
 
     function update($table_name,$column_name,$column_id,$data){
+        try {
         $this->db->where($column_name, $column_id);
         $this->db->update($table_name, $data);
+
         return TRUE;
+        }
+        catch (Exception $e) {
+            return FALSE;
+        }
     }
 
     function delete($table_name,$column_name,$column_id){

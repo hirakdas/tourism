@@ -44,7 +44,7 @@
                             <div class="position-relative form-group">
                                 <label for="image" class="">Image</label>
                                 <div>
-                                    <img src="<?= base_url('assets/destination/').$result['image'];?>" height="100px" width="100px">
+                                    <img src="<?= base_url('assets/images/destination/').$result['image'];?>" height="100px" width="100px">
                                 </div>
                             </div>
                             <div class="position-relative form-group">
@@ -64,6 +64,8 @@
 <?php include 'script.php'; ?>
 
 <script>
+
+    CKEDITOR.replace('introduction');
 
     $('#destination_form_edit').submit(function(e){
 

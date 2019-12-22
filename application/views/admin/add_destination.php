@@ -58,6 +58,7 @@
 <?php include 'script.php'; ?>
 
 <script>
+    CKEDITOR.replace('introduction');
     $('#destination_form').submit(function(e){
         e.preventDefault();
         $.ajax({

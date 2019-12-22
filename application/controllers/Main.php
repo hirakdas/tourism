@@ -42,7 +42,7 @@ class Main extends CI_Controller {
         $this->load->view('layout/main',$data);
     }
 
-    public function destination_details(){
+    public function destination_details($tour_name){
         $data['view'] = 'book_trip';
         $this->load->view('layout/main',$data);
     }
