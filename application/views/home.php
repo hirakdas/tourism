@@ -43,6 +43,47 @@
     </div>
 </div>
 
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center">
+                <span class="text-serif text-primary">Destination</span>
+                <h3 class="heading-92913 text-black text-center">Our Destinations</h3>
+            </div>
+        </div>
+        <div class="row">
+            <?php foreach ($result as $row): ?>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <a href="<?= base_url('main/destination_details/').$row['tour_name'];?>">
+                        <div class="service-39381">
+                            <div class="text-center">
+                                <?= $row['tour_name']; ?>
+                            </div>
+                            <img src="<?= base_url('assets/images/destination/').$row['image']; ?>" alt="Image" class="img-fluid">
+                            <div class="p-4">
+                                <h3><span class="icon-room mr-1 text-primary"></span> <?=$row['location']?></h3>
+                                <h6><?= $row['introduction']; ?></h6>
+                                <div class="d-flex">
+                                    <div class="mr-auto">
+                                        <span class="icon-date_range"></span>
+                                        <?= $row['duration']; ?>
+                                    </div>
+                                    <div class="ml-auto price">
+                                        <span class="bg-primary">Rs <?= $row['price']; ?></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+
+
+        </div>
+    </div>
+</div>
+
 <div class="py-5">
     <div class="container">
         <div class="row">
@@ -114,46 +155,7 @@
     </div>
 </div>
 
-<div class="site-section bg-light">
-    <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-7 text-center">
-                <span class="text-serif text-primary">Destination</span>
-                <h3 class="heading-92913 text-black text-center">Our Destinations</h3>
-            </div>
-        </div>
-        <div class="row">
-            <?php foreach ($result as $row): ?>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="<?= base_url('main/destination_details/').$row['tour_name'];?>">
-                        <div class="service-39381">
-                            <div class="text-center">
-                                <?= $row['tour_name']; ?>
-                            </div>
-                            <img src="<?= base_url('assets/images/destination/').$row['image']; ?>" alt="Image" class="img-fluid">
-                            <div class="p-4">
-                                <h3><span class="icon-room mr-1 text-primary"></span> <?=$row['location']?></h3>
-                                <h6><?= $row['introduction']; ?></h6>
-                                <div class="d-flex">
-                                    <div class="mr-auto">
-                                        <span class="icon-date_range"></span>
-                                        <?= $row['duration']; ?>
-                                    </div>
-                                    <div class="ml-auto price">
-                                        <span class="bg-primary">Rs <?= $row['price']; ?></span>
-                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            <?php endforeach; ?>
-
-
-        </div>
-    </div>
-</div>
 
 <!--<div class="site-section">-->
 <!--    <div class="container">-->

@@ -43,13 +43,47 @@ class Main extends CI_Controller {
     }
 
     public function destination_details($tour_name){
+        $tour = str_replace("%20"," ",$tour_name);
+        $tour_id=$this->Common_model->get_tour_id($tour);
+        $data['destination'] = $this->Common_model->get_one('destination','id',$tour_id['id']);
+        $data['text']=$this->Common_model->get_one('destination_text','tour_id',$tour_id['id']);
+        $data['img']=$this->Common_model->get_all_where('destination_img','tour_id',$tour_id['id']);
+
         $data['view'] = 'book_trip';
         $this->load->view('layout/main',$data);
     }
 
-    public function book_now(){
+    public function book_now($tour_name){
+        $tour = str_replace("%20"," ",$tour_name);
+        $tour_id=$this->Common_model->get_tour_id($tour);
+        $data['destination'] = $this->Common_model->get_one('destination','id',$tour_id['id']);
         $data['view'] = 'book_now';
         $this->load->view('layout/main',$data);
+    }
+
+    public function bookings(){
+            $data=array(
+                'tour_id' => $this->input->post('tour_id'),
+                'tour_name' => $this->input->post('tour_name'),
+                'name' => $this->input->post('full_name'),
+                'email' => $this->input->post('email'),
+                'phone' => $this->input->post('phone'),
+                'people' => $this->input->post('people'),
+                'date_from' => $this->input->post('date_from'),
+                'date_to' => $this->input->post('date_to'),
+                'price' => $this->input->post('price'),
+                'created' => time()
+            );
+            $data = $this->security->xss_clean($data);
+            $result = $this->Common_model->add('orders',$data);
+
+            if($result){
+                $data=array(
+                    'error'=> 0,
+                    'msg'=> "Booking Successful"
+                );
+                echo json_encode($data);
+            }
     }
 
 

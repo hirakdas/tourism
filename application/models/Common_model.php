@@ -52,4 +52,11 @@ class Common_model extends CI_Model{
             return FALSE;
         }
     }
+
+    function get_tour_id($tour_name){
+        $this->db->where('tour_name',$tour_name);
+        $this->db->select('id');
+        $query = $this->db->get('destination');
+        return $query->row_array();
+    }
 }

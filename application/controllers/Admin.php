@@ -249,8 +249,6 @@ class Admin extends CI_Controller
         $data['tour_name']=$this->Common_model->get_all_where('destination','id',$id);
         $data['text'] = $this->Common_model->get_all_where('destination_text','tour_id',$id);
         $data['img'] = $this->Common_model->get_all_where('destination_img','tour_id',$id);
-//        print_r($data['text']);
-//        die();
         $data['view'] = 'admin/edit_destination_details';
         $this->load->view('admin/layout',$data);
     }
