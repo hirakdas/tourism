@@ -39,7 +39,7 @@
                             </div>
                             <div class="position-relative form-group">
                                 <label for="price" class="">Price</label>
-                                <input name="price"  type="text" class="form-control" required>
+                                <input name="price"  type="text" class="form-control" onkeypress="return ((event.charCode >= 48 &&  event.charCode <= 57) || (event.charCode >= 0 && event.charCode <= 31) )" maxlength="6" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="image" class="">Image</label>
@@ -72,7 +72,8 @@
             success: function(data){
 
                 if(data.error == 0){
-                    $('#destination_form')[0].reset();
+                    $('#destination_form')[0].reset()
+                    window.scrollTo(0, 0);
                     $('#error').html("<div class='alert alert-success'>" +
                         "<a href='#' class='close' data-dismiss='alert'>&times;</a>" +
                         "<strong>Success! </strong>" + data.msg +
@@ -92,4 +93,5 @@
             }
         });
     })
+    $('#add_destination').addClass('mm-active');
 </script>

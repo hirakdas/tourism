@@ -59,4 +59,13 @@ class Common_model extends CI_Model{
         $query = $this->db->get('destination');
         return $query->row_array();
     }
+
+    function get_all_destination($id){
+        $this->db->select('*');
+        $this->db->from('destination');
+        $this->db->join('destination_text', 'destination.id = destination_text.tour_id');
+        $this->db->where('destination.id', $id);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }

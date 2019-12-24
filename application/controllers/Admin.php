@@ -27,8 +27,10 @@ class Admin extends CI_Controller
             $sub_array=array();
             $sub_array[]='
                            <td>
+                           <span>
                                <a href="'.base_url().'admin/edit_destination/'.$row['id'].'" class="btn btn-primary btn-sm update" id="'.$row['id'].'" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
                                <a href="" class="btn btn-danger btn-sm item_delete delete" id="'. $row['id'] .'" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
+                           </span>
                            </td>
                         ';
             $sub_array[]=$row['tour_name'];
@@ -89,8 +91,8 @@ class Admin extends CI_Controller
                     'msg'=> "Something Went Wrong"
                 );
                 echo json_encode($data);
+                }
             }
-        }
         else{
             $data=array(
                 'error'=> 1,
@@ -341,4 +343,77 @@ class Admin extends CI_Controller
 
     }
 
+    public function view_orders(){
+        $data['view'] = 'admin/bookings';
+        $this->load->view('admin/layout',$data);
+    }
+
+    public function fetch_orders(){
+        $result=$this->Common_model->get_all('orders');
+        $data=array();
+        foreach($result as $row){
+
+
+            $row['date_from'] == null ? $date_from = $row['date_from'] : $date_from = null;
+            $row['date_to'] == null ? $date_to = $row['date_to'] : $date_to = null;
+
+            $sub_array=array();
+            $sub_array[]='
+                          
+                            <span>
+                               <a href="'.base_url().'admin/edit_destination/'.$row['id'].'" class="btn btn-primary btn-sm update" id="'.$row['id'].'" data-toggle="tooltip" data-placement="top" title="Complete"><i class="fa fa-check"></i></a>
+                               <a href="" class="btn btn-danger btn-sm item_delete delete" id="'. $row['id'] .'" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
+                            </span>
+                           
+                        ';
+            $sub_array[]=$row['name'];
+            $sub_array[]=$row['phone'];
+            $sub_array[]=$row['email'];
+            $sub_array[]=$row['tour_name'];
+            $sub_array[]=$row['people'];
+            $sub_array[]= $date_from . " " .$date_to ;
+            $sub_array[]=$row['price'];
+            $sub_array[]=$row['amount_paid'];
+            $sub_array[]=date("d-M-Y H:i A", strtotime($row['created']));
+            $sub_array[]=$row['status'];
+            $data[]=$sub_array;
+        }
+        $output = array(
+            "data" => $data
+        );
+        echo json_encode($output);
+    }
+
+    public function delete_destination($id){
+        $data=$this->Common_model->get_one('destination','id',$id);
+        $img= $this->Common_model->get_all_where('destination_img','tour_id',$id);
+
+//        $file_with_path = $_SERVER['DOCUMENT_ROOT'] . "/assets/images/destination/" . $data['image'];
+        $file_with_path = "./assets/images/destination/".$data['image'];
+
+//        print_r($file_with_path);
+//        die();
+        if (file_exists($file_with_path)) {
+            unlink($file_with_path);
+        }
+
+        foreach($img as $row){
+            $file_with_path2 = "./assets/images/destination_details/" . $row['image'];
+            if (file_exists($file_with_path2)) {
+                unlink($file_with_path2);
+            }
+        }
+        $result=$this->Common_model->delete('destination','id',$id);
+        $result2=$this->Common_model->delete('destination_text','tour_id',$id);
+        $result3=$this->Common_model->delete('destination_img','tour_id',$id);
+
+
+        if($result) {
+            $data = array(
+                'error' => 0,
+                'msg' => "Record Deleted Successfully"
+            );
+            echo json_encode($data);
+        }
+    }
 }

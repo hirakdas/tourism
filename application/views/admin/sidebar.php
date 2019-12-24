@@ -34,33 +34,33 @@
             <ul class="vertical-nav-menu">
                 <li class="app-sidebar__heading">Bookings</li>
                 <li>
-                    <a href="index.html" class="mm-active">
+                    <a href="<?= base_url('admin/view_orders');?>" id="orders">
                         <i class="metismenu-icon pe-7s-rocket"></i>
                         View Bookings
                     </a>
                 </li>
                 <li class="app-sidebar__heading">Destination</li>
                 <li>
-                    <a href="<?= base_url('admin/view_destination');?>">
+                    <a href="<?= base_url('admin/view_destination');?>" id="view_destination">
                         <i class="metismenu-icon pe-7s-display2"></i>
                         View Destination
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/add_destination');?>">
+                    <a href="<?= base_url('admin/add_destination');?>" id="add_destination">
                         <i class="metismenu-icon pe-7s-display2"></i>
                         Add Destination
                     </a>
                 </li>
                 <li class="app-sidebar__heading">Destination Details</li>
                 <li>
-                    <a href="<?= base_url('admin/view_destination_details');?>">
+                    <a href="<?= base_url('admin/view_destination_details');?>" id="view_dest_details">
                         <i class="metismenu-icon pe-7s-display2"></i>
                         View Destination Details
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/add_destination_details');?>">
+                    <a href="<?= base_url('admin/add_destination_details');?>" id="add_dest_details">
                         <i class="metismenu-icon pe-7s-display2"></i>
                         Add Destination Details
                     </a>

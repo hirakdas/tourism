@@ -83,6 +83,7 @@
             success: function(data){
 
                 if(data.error === 0){
+                    window.scrollTo(0, 0);
                     $('#error').html("<div class='alert alert-success'>" +
                         "<a href='#' class='close' data-dismiss='alert'>&times;</a>" +
                         "<strong>Success! </strong>" + data.msg +
@@ -103,4 +104,6 @@
             }
         });
     })
+    $('#view_destination').addClass('mm-active');
+
 </script>

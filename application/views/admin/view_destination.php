@@ -54,10 +54,9 @@
 
     $(document).on('click','.delete', function(e){
         e.preventDefault();
-        let table_name = 'destination';
         let id = $(this).attr("id");
         bootbox.confirm({
-            message: "This is a confirm with custom button text and color! Do you like it?",
+            message: "Are you sure you want to delete it?",
             buttons: {
                 confirm: {
                     label: 'Yes',
@@ -71,7 +70,7 @@
             callback: function (result) {
                 if(result){
                     $.ajax({
-                        url:'<?= base_url('admin/delete/'); ?>'+table_name+'/'+id,
+                        url:'<?= base_url('admin/delete_destination/'); ?>'+id,
                         type:"post",
                         processData:false,
                         contentType:false,

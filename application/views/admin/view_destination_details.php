@@ -49,3 +49,7 @@
 
 </div>
 <?php include'script.php' ?>
+
+<script>
+    $('#view_dest_details').addClass('mm-active');
+</script>

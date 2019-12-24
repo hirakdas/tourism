@@ -116,4 +116,6 @@
         });
 
     })
+    $('#add_dest_details').addClass('mm-active');
+
 </script>

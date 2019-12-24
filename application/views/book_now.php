@@ -72,14 +72,12 @@
             dataType: 'json',
             success: function(data){
                 if(data.error === 0){
+                    $('#booking_form')[0].reset();
                     bootbox.alert(data.msg);
                 }
             }
         });
     });
 
-    $('.bootbox-accept').click(function(){
-        alert('hi');
-    })
 
 </script>
