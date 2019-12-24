@@ -225,6 +225,9 @@ class Admin extends CI_Controller
                 'details' => $this->input->post('details')
             );
 
+//            print_r($data);
+//            die();
+
             $result = $this->Common_model->add('destination_text',$data);
             $result2 = $this->Common_model->add_batch('destination_img',$image_data);
 
@@ -248,8 +251,8 @@ class Admin extends CI_Controller
     }
 
     public function edit_destination_details($id){
-        $data['tour_name']=$this->Common_model->get_all_where('destination','id',$id);
-        $data['text'] = $this->Common_model->get_all_where('destination_text','tour_id',$id);
+        $data['tour_name']=$this->Common_model->get_one('destination','id',$id);
+        $data['text'] = $this->Common_model->get_one('destination_text','tour_id',$id);
         $data['img'] = $this->Common_model->get_all_where('destination_img','tour_id',$id);
         $data['view'] = 'admin/edit_destination_details';
         $this->load->view('admin/layout',$data);

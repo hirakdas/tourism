@@ -31,7 +31,7 @@
                             </div>
                             <div class="position-relative form-group">
                                 <label for="introduction" class="">Introduction</label>
-                                <textarea name="introduction"  class="form-control" required></textarea>
+                                <textarea id="introduction" class="form-control" required></textarea>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="duration" class="">Duration</label>
@@ -61,10 +61,12 @@
     CKEDITOR.replace('introduction');
     $('#destination_form').submit(function(e){
         e.preventDefault();
+        var form_data = new FormData(this);
+        form_data.append('introduction', CKEDITOR.instances['introduction'].getData());
         $.ajax({
             url:'<?= base_url('admin/insert_destination'); ?>',
             type:"post",
-            data:new FormData(this),
+            data:form_data,
             processData:false,
             contentType:false,
             cache:false,

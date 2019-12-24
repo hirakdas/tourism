@@ -30,12 +30,12 @@
 
                             <div class="position-relative form-group">
                                 <label for="introduction" class="">Introduction</label>
-                                <textarea name="about" id="about" class="form-control" required></textarea>
+                                <textarea id="about" class="form-control" required></textarea>
                             </div>
 
                             <div class="position-relative form-group">
                                 <label for="details" class="">Details</label>
-                                <textarea name="details" id="details" class="form-control" required></textarea>
+                                <textarea id="details" class="form-control" required></textarea>
                             </div>
 
                             <div class="position-relative form-group">
@@ -55,8 +55,7 @@
 <?php include 'script.php'; ?>
 
 <script>
-    CKEDITOR.replace('details');
-    CKEDITOR.replace('about');
+
 
     $(document).ready(function(){
         $.ajax({
@@ -75,9 +74,15 @@
         e.preventDefault();
         var files = $('#files')[0].files;
         var form_data = new FormData(this);
+        form_data.append('details', CKEDITOR.instances['details'].getData());
+        form_data.append('about', CKEDITOR.instances['about'].getData());
+
         for(var count = 0; count<files.length; count++) {
             form_data.append("files[]", files[count]);
         }
+        // for (let [key, value] of form_data.entries()) {
+        //     console.log(key, ':', value);
+        // }
         $.ajax({
             url:"<?php echo base_url(); ?>admin/insert_destination_details", //base_url() return http://localhost/tutorial/codeigniter/
             method:"POST",
@@ -115,7 +120,9 @@
             }
         });
 
-    })
+    });
+    CKEDITOR.replace('details');
+    CKEDITOR.replace('about');
     $('#add_dest_details').addClass('mm-active');
 
 </script>

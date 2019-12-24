@@ -24,18 +24,18 @@
                             <div class="position-relative form-group">
                                 <label for="tour_name" class="">Tour Name</label>
                                 <select name="tour_id" id="tour_id" class="form-control" required>
-                                    <option value="<?= $tour_name[0]['id']?>"><?=$tour_name[0]['tour_name']?></option>
+                                    <option value="<?= $tour_name['id']?>"><?=$tour_name['tour_name']?></option>
                                 </select>
                             </div>
 
                             <div class="position-relative form-group">
                                 <label for="introduction" class="">Introduction</label>
-                                <textarea name="about" id="about" class="form-control" required><?= $text[0]['about']?></textarea>
+                                <textarea  id="about" class="form-control" required><?= $text['about']?></textarea>
                             </div>
 
                             <div class="position-relative form-group">
                                 <label for="details" class="">Details</label>
-                                <textarea name="details" id="details" class="form-control" required><?= $text[0]['details']?></textarea>
+                                <textarea  id="details" class="form-control" required><?= $text['details']?></textarea>
                             </div>
 
                             <div class="position-relative form-group">
@@ -110,6 +110,8 @@
         let id = $('.destination_id').attr('id');
         var files = $('#files')[0].files;
         var form_data = new FormData(this);
+        form_data.append('details', CKEDITOR.instances['details'].getData());
+        form_data.append('about', CKEDITOR.instances['about'].getData());
         for(var count = 0; count<files.length; count++) {
             form_data.append("files[]", files[count]);
         }

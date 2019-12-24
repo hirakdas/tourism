@@ -71,11 +71,12 @@
 
         e.preventDefault();
         let id = $('.destination_id').attr('id');
-
+        var form_data = new FormData(this);
+        form_data.append('introduction', CKEDITOR.instances['introduction'].getData());
         $.ajax({
             url:'<?= base_url('admin/update_destination/'); ?>'+id,
             type:"post",
-            data:new FormData(this),
+            data:form_data,
             processData:false,
             contentType:false,
             cache:false,
